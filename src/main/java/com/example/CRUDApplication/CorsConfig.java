@@ -45,7 +45,7 @@ public class CorsConfig {
         // ✅ Allow both localhost (development) and Vercel frontend
         corsConfiguration.setAllowedOrigins(Arrays.asList(
                 "http://localhost:3000",
-                "https://fitness-activity-bnwi-2wh3hnjss-eashamashuds-projects.vercel.app"
+                "https://fitness-activity-bnwi-6onorl1um-eashamashuds-projects.vercel.app/"
         ));
 
         // ✅ Explicitly allow important headers
