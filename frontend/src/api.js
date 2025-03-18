@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = 'fitness-activity-production.up.railway.app';
+const API_BASE_URL = 'https://fitness-activity-production.up.railway.app/api';
 
 //Fetch all fitness data
 export const fetchFitnessData = async () => {
