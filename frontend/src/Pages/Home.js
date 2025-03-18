@@ -45,26 +45,54 @@ const Home = () => {
 
 
             {/*{ Features Section }*/}
+            {/*<Container className="mt-5">*/}
+            {/*    <Row className="text-center justify-content-center">*/}
+            {/*        <Col md={4}>*/}
+            {/*            <Card className="shadow-lg p-5" style={{height: "250px"}}>*/}
+            {/*                <Card.Body>*/}
+            {/*                    <Card.Title className="fs-2 fw-bold ">📊 Track Workouts</Card.Title>*/}
+            {/*                    <Card.Text className="fs-5 ">Log your exercises and calories burned.</Card.Text>*/}
+            {/*                </Card.Body>*/}
+            {/*            </Card>*/}
+            {/*        </Col>*/}
+            {/*        <Col md={4}>*/}
+            {/*            <Card className="shadow-lg p-5" style={{height: "250px"}}>*/}
+            {/*                <Card.Body>*/}
+            {/*                    <Card.Title className="fs-2 fw-bold">🎯 Set Goals</Card.Title>*/}
+            {/*                    <Card.Text className="fs-5">Stay motivated with personalized fitness goals.</Card.Text>*/}
+            {/*                </Card.Body>*/}
+            {/*            </Card>*/}
+            {/*        </Col>*/}
+            {/*        <Col md={4}>*/}
+            {/*            <Card className="shadow-lg p-5" style={{height: "250px"}}>*/}
+            {/*                <Card.Body>*/}
+            {/*                    <Card.Title className="fs-2 fw-bold">📈 View Progress</Card.Title>*/}
+            {/*                    <Card.Text className="fs-5">Analyze your journey with reports and insights.</Card.Text>*/}
+            {/*                </Card.Body>*/}
+            {/*            </Card>*/}
+            {/*        </Col>*/}
+            {/*    </Row>*/}
+            {/*</Container>*/}
             <Container className="mt-5">
                 <Row className="text-center justify-content-center">
-                    <Col md={4}>
-                        <Card className="shadow-lg p-5" style={{height: "250px"}}>
+                    <Col md={4} className="d-flex justify-content-center">
+                        <Card className="shadow-lg p-5" style={{ width: "100%", maxWidth: "350px", height: "250px" }}>
                             <Card.Body>
-                                <Card.Title className="fs-2 fw-bold ">📊 Track Workouts</Card.Title>
-                                <Card.Text className="fs-5 ">Log your exercises and calories burned.</Card.Text>
+                                <Card.Title className="fs-2 fw-bold">📊 Track Workouts</Card.Title>
+                                <Card.Text className="fs-5">Log your exercises and calories burned.</Card.Text>
                             </Card.Body>
                         </Card>
                     </Col>
-                    <Col md={4}>
-                        <Card className="shadow-lg p-5" style={{height: "250px"}}>
+                    <Col md={4} className="d-flex justify-content-center">
+                        <Card className="shadow-lg p-5" style={{ width: "100%", maxWidth: "350px", height: "250px" }}>
                             <Card.Body>
                                 <Card.Title className="fs-2 fw-bold">🎯 Set Goals</Card.Title>
                                 <Card.Text className="fs-5">Stay motivated with personalized fitness goals.</Card.Text>
                             </Card.Body>
                         </Card>
                     </Col>
-                    <Col md={4}>
-                        <Card className="shadow-lg p-5" style={{height: "250px"}}>
+                    <Col md={4} className="d-flex justify-content-center">
+                        <Card className="shadow-lg p-5" style={{ width: "100%", maxWidth: "350px", height: "250px" }}>
                             <Card.Body>
                                 <Card.Title className="fs-2 fw-bold">📈 View Progress</Card.Title>
                                 <Card.Text className="fs-5">Analyze your journey with reports and insights.</Card.Text>
@@ -73,6 +101,7 @@ const Home = () => {
                     </Col>
                 </Row>
             </Container>
+
 
 
         </>
