@@ -41,12 +41,27 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
+
+        // ✅ Allow both localhost (development) and Vercel frontend
         corsConfiguration.setAllowedOrigins(Arrays.asList(
-                "http://localhost:3000",  // Local Development
-                "https://fitness-activity-bnwi-2wh3hnjss-eashamashuds-projects.vercel.app" // Vercel Deployed Frontend
+                "http://localhost:3000",
+                "https://fitness-activity-bnwi-2wh3hnjss-eashamashuds-projects.vercel.app"
         ));
-        corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept", "Authorization"));
-        corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+        // ✅ Explicitly allow important headers
+        corsConfiguration.setAllowedHeaders(Arrays.asList(
+                "Origin", "Content-Type", "Accept", "Authorization"
+        ));
+
+        // ✅ Allow all common HTTP methods
+        corsConfiguration.setAllowedMethods(Arrays.asList(
+                "GET", "POST", "PUT", "DELETE", "OPTIONS"
+        ));
+
+        // ✅ Allow all exposed headers
+        corsConfiguration.setExposedHeaders(Arrays.asList(
+                "Authorization", "Content-Type"
+        ));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
