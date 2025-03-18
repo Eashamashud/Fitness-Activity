@@ -21,7 +21,8 @@ const Workouts = () => {
 
     const fetchWorkouts = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/api/getAllFitness");
+            //const response = await axios.get("http://localhost:8080/api/getAllFitness");
+            const response = await axios.get("https://fitness-activity-production.up.railway.app/api/getAllFitness");
             setWorkouts(response.data);
         } catch (error) {
             console.error("Error fetching workouts:", error);
@@ -43,7 +44,8 @@ const Workouts = () => {
     // Update workout
     const handleUpdate = async () => {
         try {
-            await axios.put(`http://localhost:8080/api/updateFitnessById/${selectedWorkout.id}`, formData);
+            //await axios.put(`http://localhost:8080/api/updateFitnessById/${selectedWorkout.id}`, formData);
+            await axios.put(`https://fitness-activity-production.up.railway.app/api/updateFitnessById/${selectedWorkout.id}`, formData);
             setShowModal(false);
             fetchWorkouts(); // Refresh the list
         } catch (error) {
@@ -55,7 +57,8 @@ const Workouts = () => {
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this workout?")) {
             try {
-                await axios.delete(`http://localhost:8080/api/deleteFitnessById/${id}`);
+                //await axios.delete(`http://localhost:8080/api/deleteFitnessById/${id}`);
+                await axios.delete(`https://fitness-activity-production.up.railway.app/api/deleteFitnessById/${id}`);
                 fetchWorkouts(); // Refresh the list
             } catch (error) {
                 console.error("Error deleting workout:", error);
@@ -148,4 +151,5 @@ const Workouts = () => {
 };
 
 export default Workouts;
+
 
