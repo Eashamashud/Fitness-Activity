@@ -1,7 +1,7 @@
 package com.example.CRUDApplication.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+//import jakarta.persistence.Id;
 
 import java.time.LocalDate;
 
@@ -9,6 +9,7 @@ import java.time.LocalDate;
 public class Fitness {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String exerciseName;
@@ -62,9 +63,9 @@ public class Fitness {
 
 
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public Long getId() {
         return id;

@@ -11,7 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 @RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
 public class FitnessController {
 
     @Autowired
@@ -24,7 +27,8 @@ public class FitnessController {
             fitnessRepo.findAll().forEach(fitnessList::add);
 
             if(fitnessList.isEmpty()){
-                return new ResponseEntity<>( HttpStatus.NO_CONTENT);
+//                return new ResponseEntity<>( HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
             }
             return new ResponseEntity<>(fitnessList, HttpStatus.OK);
         } catch(Exception ex){
@@ -42,11 +46,20 @@ public class FitnessController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+//    @PostMapping("/addFitness")
+//    public ResponseEntity<Fitness> addFitness(@RequestBody Fitness fitness){
+//        Fitness fitnessObj = fitnessRepo.save(fitness);
+//        return new ResponseEntity<>(fitnessObj, HttpStatus.OK);
+//    }
+
     @PostMapping("/addFitness")
     public ResponseEntity<Fitness> addFitness(@RequestBody Fitness fitness){
+        System.out.println("POST /addFitness called with: " + fitness);
         Fitness fitnessObj = fitnessRepo.save(fitness);
-        return new ResponseEntity<>(fitnessObj, HttpStatus.OK);
+        return new ResponseEntity<>(fitnessObj, HttpStatus.CREATED);
     }
+
+
 
     @PutMapping("/updateFitnessById/{id}")
     public ResponseEntity<Fitness> updateFitnessById(@PathVariable Long id, @RequestBody Fitness newFitnessData){
