@@ -47,7 +47,6 @@ public class FitnessController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
 //    @PostMapping("/addFitness")
 //    public ResponseEntity<Fitness> addFitness(@RequestBody Fitness fitness){
 //        Fitness fitnessObj = fitnessRepo.save(fitness);
