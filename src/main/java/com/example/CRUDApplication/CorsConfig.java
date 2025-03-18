@@ -42,23 +42,20 @@ public class CorsConfig {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
 
-        // ✅ Allow both localhost (development) and Vercel frontend
-        corsConfiguration.setAllowedOriginPatterns(List.of(
-                "http://localhost:3000",
-                "https://fitness-activity-bnwi-6onorl1um-eashamashuds-projects.vercel.app"
-        ));
+        // ✅ Allow ALL origins during testing (switch to specific domains in production)
+        corsConfiguration.addAllowedOriginPattern("*");  // ✅ Temporarily allow all origins for debugging
 
-        // ✅ Explicitly allow important headers
+        // ✅ Allow necessary headers
         corsConfiguration.setAllowedHeaders(List.of(
                 "Origin", "Content-Type", "Accept", "Authorization"
         ));
 
-        // ✅ Allow all common HTTP methods
+        // ✅ Allow standard HTTP methods
         corsConfiguration.setAllowedMethods(List.of(
                 "GET", "POST", "PUT", "DELETE", "OPTIONS"
         ));
 
-        // ✅ Allow all exposed headers
+        // ✅ Allow response headers
         corsConfiguration.setExposedHeaders(List.of(
                 "Authorization", "Content-Type"
         ));
