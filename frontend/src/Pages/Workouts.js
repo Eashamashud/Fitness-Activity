@@ -14,17 +14,6 @@ const Workouts = () => {
         notes: "",
     });
 
-    // Fetch workouts from backend
-    // useEffect(() => {
-    //     fetchWorkouts();
-    // }, []);
-
-    // useEffect(() => {
-    //     const userId = localStorage.getItem("userId"); // Get user ID from storage
-    //     if (userId) {
-    //         fetchWorkouts(userId);
-    //     }
-    // }, []);
     useEffect(() => {
         const userId = localStorage.getItem("userId");
 
@@ -37,25 +26,6 @@ const Workouts = () => {
         fetchWorkouts(userId);
     }, []);
 
-
-
-    // const fetchWorkouts = async () => {
-    //     try {
-    //         //const response = await axios.get("http://localhost:8080/api/getAllFitness");
-    //         const response = await axios.get("https://fitness-activity-production.up.railway.app/api/getAllFitness");
-    //         setWorkouts(response.data);
-    //     } catch (error) {
-    //         console.error("Error fetching workouts:", error);
-    //     }
-    // };
-    // const fetchWorkouts = async (userId) => {
-    //     try {
-    //         const response = await axios.get(`https://fitness-activity-production.up.railway.app/api/getUserFitness/${userId}`);
-    //         setWorkouts(response.data);
-    //     } catch (error) {
-    //         console.error("Error fetching workouts:", error);
-    //     }
-    // };
     const fetchWorkouts = async () => {
         const userId = localStorage.getItem("userId");
         if (!userId) {
@@ -70,9 +40,6 @@ const Workouts = () => {
             console.error("Error fetching workouts:", error);
         }
     };
-
-
-
     // Handle input changes in form
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -84,43 +51,7 @@ const Workouts = () => {
         setFormData(workout);
         setShowModal(true);
     };
-    //
-    // // Update workout
-    // const handleUpdate = async () => {
-    //     try {
-    //         //await axios.put(`http://localhost:8080/api/updateFitnessById/${selectedWorkout.id}`, formData);
-    //         await axios.put(`https://fitness-activity-production.up.railway.app/api/updateFitnessById/${selectedWorkout.id}`, formData);
-    //         setShowModal(false);
-    //         fetchWorkouts(); // Refresh the list
-    //     } catch (error) {
-    //         console.error("Error updating workout:", error);
-    //     }
-    // };
-    //
-    // // Delete workout
-    // const handleDelete = async (id) => {
-    //     if (window.confirm("Are you sure you want to delete this workout?")) {
-    //         try {
-    //             //await axios.delete(`http://localhost:8080/api/deleteFitnessById/${id}`);
-    //             await axios.delete(`https://fitness-activity-production.up.railway.app/api/deleteFitnessById/${id}`);
-    //             fetchWorkouts(); // Refresh the list
-    //         } catch (error) {
-    //             console.error("Error deleting workout:", error);
-    //         }
-    //     }
-    // };
 
-    // // Update workout
-    // const handleUpdate = async () => {
-    //     try {
-    //         const userId = localStorage.getItem("userId");  // ✅ Get user ID
-    //         await axios.put(`https://fitness-activity-production.up.railway.app/api/updateFitnessById/${selectedWorkout.id}`, formData);
-    //         setShowModal(false);
-    //         if (userId) fetchWorkouts(userId); // ✅ Ensure correct user data is fetched
-    //     } catch (error) {
-    //         console.error("Error updating workout:", error);
-    //     }
-    // };
     const handleUpdate = async () => {
         const userId = localStorage.getItem("userId");
         if (!userId) {
@@ -136,21 +67,6 @@ const Workouts = () => {
             console.error("Error updating workout:", error);
         }
     };
-
-
-// Delete workout
-//     const handleDelete = async (id) => {
-//         if (window.confirm("Are you sure you want to delete this workout?")) {
-//             try {
-//                 const userId = localStorage.getItem("userId");  // ✅ Get user ID
-//                 await axios.delete(`https://fitness-activity-production.up.railway.app/api/deleteFitnessById/${id}`);
-//                 if (userId) fetchWorkouts(userId); // ✅ Ensure correct user data is fetched
-//             } catch (error) {
-//                 console.error("Error deleting workout:", error);
-//             }
-//         }
-//     };
-//
 
     const handleDelete = async (id) => {
         const userId = localStorage.getItem("userId");
@@ -168,7 +84,6 @@ const Workouts = () => {
             }
         }
     };
-
 
     return (
         <>

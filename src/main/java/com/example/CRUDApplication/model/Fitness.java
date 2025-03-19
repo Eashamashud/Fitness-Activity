@@ -71,11 +71,6 @@ public class Fitness {
         this.userId = userId;
     }
 
-
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-
     public Long getId() {
         return id;
     }

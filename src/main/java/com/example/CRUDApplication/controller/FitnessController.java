@@ -14,8 +14,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-//@CrossOrigin(origins = "http://localhost:3000")
-//@CrossOrigin(origins = "https://fitness-activity-bnwi.vercel.app")
 @CrossOrigin(origins = "*")
 public class FitnessController {
 
@@ -47,18 +45,6 @@ public class FitnessController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-//    @PostMapping("/addFitness")
-//    public ResponseEntity<Fitness> addFitness(@RequestBody Fitness fitness){
-//        Fitness fitnessObj = fitnessRepo.save(fitness);
-//        return new ResponseEntity<>(fitnessObj, HttpStatus.OK);
-//    }
-
-//    @PostMapping("/addFitness")
-//    public ResponseEntity<Fitness> addFitness(@RequestBody Fitness fitness){
-//        System.out.println("POST /addFitness called with: " + fitness);
-//        Fitness fitnessObj = fitnessRepo.save(fitness);
-//        return new ResponseEntity<>(fitnessObj, HttpStatus.CREATED);
-//    }
 
     @PostMapping("/addFitness")
     public ResponseEntity<?> addFitness(@RequestBody Fitness fitness) {
