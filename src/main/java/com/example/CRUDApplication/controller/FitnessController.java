@@ -53,12 +53,29 @@ public class FitnessController {
 //        return new ResponseEntity<>(fitnessObj, HttpStatus.OK);
 //    }
 
+//    @PostMapping("/addFitness")
+//    public ResponseEntity<Fitness> addFitness(@RequestBody Fitness fitness){
+//        System.out.println("POST /addFitness called with: " + fitness);
+//        Fitness fitnessObj = fitnessRepo.save(fitness);
+//        return new ResponseEntity<>(fitnessObj, HttpStatus.CREATED);
+//    }
+
     @PostMapping("/addFitness")
-    public ResponseEntity<Fitness> addFitness(@RequestBody Fitness fitness){
-        System.out.println("POST /addFitness called with: " + fitness);
-        Fitness fitnessObj = fitnessRepo.save(fitness);
-        return new ResponseEntity<>(fitnessObj, HttpStatus.CREATED);
+    public ResponseEntity<?> addFitness(@RequestBody Fitness fitness) {
+        if (fitness.getUserId() == null || fitness.getUserId().isEmpty()) {
+            return new ResponseEntity<>("User ID is required", HttpStatus.BAD_REQUEST);
+        }
+
+        try {
+            System.out.println("POST /addFitness called with userId: " + fitness.getUserId());
+            Fitness savedFitness = fitnessRepo.save(fitness);
+            return new ResponseEntity<>(savedFitness, HttpStatus.CREATED);
+        } catch (Exception e) {
+            System.err.println("Error saving fitness entry: " + e.getMessage());
+            return new ResponseEntity<>("Error saving fitness entry", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
 
     @PutMapping("/updateFitnessById/{id}")
     public ResponseEntity<Fitness> updateFitnessById(@PathVariable Long id, @RequestBody Fitness newFitnessData){

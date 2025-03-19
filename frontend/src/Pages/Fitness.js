@@ -205,6 +205,9 @@ const Fitness = () => {
     const handleAddFitness = async (event) => {
         event.preventDefault(); // ✅ Prevent page reload
 
+        // Get the userId from local storage
+        const userId = localStorage.getItem("userId");
+
         // Prevent adding if fields are empty
         if (!exerciseName.trim() || !date || !duration || !caloriesBurned) {
             alert("Please fill in all fields");

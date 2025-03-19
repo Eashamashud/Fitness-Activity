@@ -57,31 +57,57 @@ const Workouts = () => {
         setFormData(workout);
         setShowModal(true);
     };
+    //
+    // // Update workout
+    // const handleUpdate = async () => {
+    //     try {
+    //         //await axios.put(`http://localhost:8080/api/updateFitnessById/${selectedWorkout.id}`, formData);
+    //         await axios.put(`https://fitness-activity-production.up.railway.app/api/updateFitnessById/${selectedWorkout.id}`, formData);
+    //         setShowModal(false);
+    //         fetchWorkouts(); // Refresh the list
+    //     } catch (error) {
+    //         console.error("Error updating workout:", error);
+    //     }
+    // };
+    //
+    // // Delete workout
+    // const handleDelete = async (id) => {
+    //     if (window.confirm("Are you sure you want to delete this workout?")) {
+    //         try {
+    //             //await axios.delete(`http://localhost:8080/api/deleteFitnessById/${id}`);
+    //             await axios.delete(`https://fitness-activity-production.up.railway.app/api/deleteFitnessById/${id}`);
+    //             fetchWorkouts(); // Refresh the list
+    //         } catch (error) {
+    //             console.error("Error deleting workout:", error);
+    //         }
+    //     }
+    // };
 
     // Update workout
     const handleUpdate = async () => {
         try {
-            //await axios.put(`http://localhost:8080/api/updateFitnessById/${selectedWorkout.id}`, formData);
+            const userId = localStorage.getItem("userId");  // ✅ Get user ID
             await axios.put(`https://fitness-activity-production.up.railway.app/api/updateFitnessById/${selectedWorkout.id}`, formData);
             setShowModal(false);
-            fetchWorkouts(); // Refresh the list
+            if (userId) fetchWorkouts(userId); // ✅ Ensure correct user data is fetched
         } catch (error) {
             console.error("Error updating workout:", error);
         }
     };
 
-    // Delete workout
+// Delete workout
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this workout?")) {
             try {
-                //await axios.delete(`http://localhost:8080/api/deleteFitnessById/${id}`);
+                const userId = localStorage.getItem("userId");  // ✅ Get user ID
                 await axios.delete(`https://fitness-activity-production.up.railway.app/api/deleteFitnessById/${id}`);
-                fetchWorkouts(); // Refresh the list
+                if (userId) fetchWorkouts(userId); // ✅ Ensure correct user data is fetched
             } catch (error) {
                 console.error("Error deleting workout:", error);
             }
         }
     };
+
 
     return (
         <>

@@ -63,6 +63,13 @@ public class Fitness {
         this.notes = notes;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
 
 //    public void setId(Long id) {
