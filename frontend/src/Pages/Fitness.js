@@ -199,7 +199,14 @@ const Fitness = () => {
     const [notes, setNotes] = useState("");
 
     useEffect(() => {
+        let userId = localStorage.getItem("userId");
+
         fetchFitnessData().then(setFitnessData);
+        if (!userId) {
+            userId = `user_${Math.random().toString(36).substring(2, 15)}`;
+            localStorage.setItem("userId", userId);
+            console.log("New user ID generated:", userId);
+        }
     }, []);
 
     const handleAddFitness = async (event) => {
@@ -207,6 +214,11 @@ const Fitness = () => {
 
         // Get the userId from local storage
         const userId = localStorage.getItem("userId");
+
+        if (!userId) {
+            console.error("User ID not found in localStorage!");
+            return;
+        }
 
         // Prevent adding if fields are empty
         if (!exerciseName.trim() || !date || !duration || !caloriesBurned) {
@@ -219,7 +231,8 @@ const Fitness = () => {
             date: date, // ✅ Uses user-selected date
             durationInMinutes: parseInt(duration), // Convert to number
             caloriesBurned: parseInt(caloriesBurned), // Convert to number
-            notes: notes // ✅ Include notes
+            notes: notes, // ✅ Include notes
+            userId: userId, // ✅ Attach userId
         };
 
         try {
@@ -270,17 +283,24 @@ const Fitness = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {fitnessData.map((entry, index) => (
-                                        <tr key={index}>
-                                            <td>{index + 1}</td>
-                                            <td>{entry.exerciseName}</td>
-                                            <td>{entry.date}</td>
-                                            <td>{entry.durationInMinutes}</td>
-                                            <td>{entry.caloriesBurned}</td>
-                                            <td>{entry.notes}</td>
+                                    {fitnessData && fitnessData.length > 0 ? (
+                                        fitnessData.map((entry, index) => (
+                                            <tr key={index}>
+                                                <td>{index + 1}</td>
+                                                <td>{entry.exerciseName}</td>
+                                                <td>{entry.date}</td>
+                                                <td>{entry.durationInMinutes}</td>
+                                                <td>{entry.caloriesBurned}</td>
+                                                <td>{entry.notes}</td>
+                                            </tr>
+                                        ))
+                                    ) : (
+                                        <tr>
+                                            <td colSpan="6" className="text-center">No workouts found</td>
                                         </tr>
-                                    ))}
+                                    )}
                                     </tbody>
+
                                 </Table>
 
                                 {/* ✅ Single Form for All Fields */}
