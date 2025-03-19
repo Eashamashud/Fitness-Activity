@@ -15,19 +15,36 @@ const Workouts = () => {
     });
 
     // Fetch workouts from backend
+    // useEffect(() => {
+    //     fetchWorkouts();
+    // }, []);
+
     useEffect(() => {
-        fetchWorkouts();
+        const userId = localStorage.getItem("userId"); // Get user ID from storage
+        if (userId) {
+            fetchWorkouts(userId);
+        }
     }, []);
 
-    const fetchWorkouts = async () => {
+
+    // const fetchWorkouts = async () => {
+    //     try {
+    //         //const response = await axios.get("http://localhost:8080/api/getAllFitness");
+    //         const response = await axios.get("https://fitness-activity-production.up.railway.app/api/getAllFitness");
+    //         setWorkouts(response.data);
+    //     } catch (error) {
+    //         console.error("Error fetching workouts:", error);
+    //     }
+    // };
+    const fetchWorkouts = async (userId) => {
         try {
-            //const response = await axios.get("http://localhost:8080/api/getAllFitness");
-            const response = await axios.get("https://fitness-activity-production.up.railway.app/api/getAllFitness");
+            const response = await axios.get(`https://fitness-activity-production.up.railway.app/api/getUserFitness/${userId}`);
             setWorkouts(response.data);
         } catch (error) {
             console.error("Error fetching workouts:", error);
         }
     };
+
 
     // Handle input changes in form
     const handleChange = (e) => {

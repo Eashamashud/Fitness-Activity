@@ -18,6 +18,8 @@ public class Fitness {
     private int caloriesBurned;
     private String notes;
 
+    private String userId; // New Store ID
+
     public Fitness() {
     }
 

@@ -84,4 +84,11 @@ public class FitnessController {
         fitnessRepo.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/getUserFitness/{userId}")
+    public ResponseEntity<List<Fitness>> getUserFitness(@PathVariable String userId) {
+        List<Fitness> userFitnessList = fitnessRepo.findByUserId(userId);
+        return ResponseEntity.ok(userFitnessList);
+    }
+
 }

@@ -9,12 +9,15 @@ export const fetchFitnessData = async () => {
 };
 
 //Add a new fitness entry
-export const addFitnessEntry = async (fitnessData) => {
-    const response = await axios.post(`${API_BASE_URL}/addFitness`, fitnessData);
+export const addFitnessEntry = async (fitnessData, userId) => {
+    const response = await axios.post(`${API_BASE_URL}/addFitness`, {
+        ...fitnessData,
+        userId: userId
+    });
     return response.data;
 };
 
 // Delete fitness entry
 export const deleteFitnessEntry = async(id) => {
     await axios.delete(`${API_BASE_URL}/deleteFitnessById/${id}`);
-}
+};
