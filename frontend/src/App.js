@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {  Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Fitness from "./Pages/Fitness";
@@ -8,6 +8,11 @@ import Navbar from "./components/Navbar";
 
 const App = () => {
   const [refresh, setRefresh] = useState(false); // Used to trigger re-render
+
+    useEffect(() => {
+        ReactGA.initialize(TRACKING_ID);
+        ReactGA.send("pageview");
+    }, []);
 
   return (
       <div className="d-flex flex-column min-vh-100">
